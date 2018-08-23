@@ -4,22 +4,25 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "flowers")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Flower {
 
     private int id;
     private String name;
     private String type;
-    private String area;
+    private Area area;
     private int points;
+    private Customer customer;
 
 
     public Flower(){}
 
-    public Flower(String name, String type, String area, int points) {
+    public Flower(String name, String type, Area area, int points, Customer customer) {
         this.name = name;
         this.type = type;
         this.area = area;
         this.points = points;
+        this.customer = customer;
     }
 
     @Id
@@ -52,11 +55,11 @@ public class Flower {
     }
 
     @Column(name = "area")
-    public String getArea() {
+    public Area getArea() {
         return area;
     }
 
-    public void setArea(String area) {
+    public void setArea(Area area) {
         this.area = area;
     }
 
@@ -67,5 +70,15 @@ public class Flower {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", nullable = false)
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

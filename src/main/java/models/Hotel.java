@@ -8,7 +8,7 @@ public class Hotel {
 
     private int id;
     private String name;
-    private String area;
+    private Area area;
     private double price;
     private int points;
 
@@ -16,7 +16,7 @@ public class Hotel {
     public Hotel(){}
 
 
-    public Hotel(String name, String area, double price, int points) {
+    public Hotel(String name, Area area, double price, int points) {
         this.name = name;
         this.area = area;
         this.price = price;
@@ -44,11 +44,11 @@ public class Hotel {
     }
 
     @Column(name = "area")
-    public String getArea() {
+    public Area getArea() {
         return area;
     }
 
-    public void setArea(String area) {
+    public void setArea(Area area) {
         this.area = area;
     }
 

@@ -1,9 +1,11 @@
 package models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Customer {
 
     private int id;
@@ -11,6 +13,9 @@ public class Customer {
     private String lastName;
     private double money;
     private int points;
+    private Set<Flower> flowers;
+    private Set<Hotel> hotels;
+
 
     public Customer(){}
 
@@ -19,6 +24,7 @@ public class Customer {
         this.lastName = lastName;
         this.money = money;
         this.points = points;
+
     }
 
     @Id
@@ -67,4 +73,14 @@ public class Customer {
     public void setPoints(int points) {
         this.points = points;
     }
+
+    @OneToMany(mappedBy = "customer")
+    public Set<Flower> getFlowers() {
+        return flowers;
+    }
+
+    public void setFlowers(Set<Flower> flowers) {
+        this.flowers = flowers;
+    }
+
 }

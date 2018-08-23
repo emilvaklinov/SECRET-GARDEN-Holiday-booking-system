@@ -1,11 +1,14 @@
 package models;
 
-import java.util.List;
+public enum Area {
 
-public class Area {
+    BULGARIA(),
+    GREECE(),
+    SCOTLAND(),
+    JAPAN(),
+    HUNGARY(),
+    AUSTRALIA(),
+    ECUADOR(),
 
-    private List<Flower>flowers;
-    private List<Hotel>hotels;
 
-    public Area(){}
 }

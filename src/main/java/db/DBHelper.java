@@ -1,5 +1,7 @@
 package db;
 
+import models.Customer;
+import models.Flower;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -39,6 +41,53 @@ public class DBHelper {
         } finally {
             session.close();
         }
+    }
+
+    public static <T> List<T> getList(Criteria criteria) {
+        List<T> results = null;
+        try {
+            transaction = session.beginTransaction();
+            results = criteria.list();
+            ;
+            transaction.commit();
+        } catch (HibernateException ex) {
+            transaction.rollback();
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return results;
+    }
+
+    public static List<Flower> getFlowersForCustomer(Customer customer) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Flower> results = null;
+        try {
+            Criteria cr = session.createCriteria(Flower.class);
+            cr.add(Restrictions.eq("customer", customer));
+            results = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return results;
+
+    }
+        public static <T> T getUnique(Criteria criteria) {
+        T result = null;
+        try {
+            transaction = session.beginTransaction();
+            result = (T) criteria.uniqueResult();
+            ;
+            transaction.commit();
+        } catch (HibernateException ex) {
+            transaction.rollback();
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return result;
     }
 
     public static <T> void deleteAll(Class classType) {
@@ -87,6 +136,12 @@ public class DBHelper {
         return results;
     }
 
+//    public static <T> List<T> getAll(Class classType) {
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        Criteria cr = session.createCriteria(classType);
+//        return getList(cr);
+//    }
+
     public static <T> T find(Class classType, int id) {
         session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
@@ -101,5 +156,12 @@ public class DBHelper {
         }
         return result;
     }
+
+//    public static Customer findFlowersForCustomer(Customer customer) {
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        Criteria cr = session.createCriteria(Customer.class);
+//        cr.add(Restrictions.eq("flower", flower));
+//        return (Customer) cr.uniqueResult();
+//    }
 
 }
