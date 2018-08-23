@@ -1,7 +1,7 @@
 package models;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "customers")
@@ -13,17 +13,20 @@ public class Customer {
     private String lastName;
     private double money;
     private int points;
-    private Set<Flower> flowers;
-    private Set<Hotel> hotels;
+    private List<Flower> flowers;
+    private Hotel hotel;
 
 
-    public Customer(){}
+    public Customer(){
+    }
 
-    public Customer(String firstName, String lastName, double money, int points) {
+    public Customer(String firstName, String lastName, double money, int points, Hotel hotel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.money = money;
         this.points = points;
+        this.hotel = hotel;
+        this.flowers = new ArrayList<Flower>();
 
     }
 
@@ -75,12 +78,17 @@ public class Customer {
     }
 
     @OneToMany(mappedBy = "customer")
-    public Set<Flower> getFlowers() {
+    public List<Flower> getFlowers() {
         return flowers;
     }
 
-    public void setFlowers(Set<Flower> flowers) {
+    public void setFlowers(List<Flower> flowers) {
         this.flowers = flowers;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hotel_id", nullable = false)
+    public Hotel getHotel() { return hotel; }
+
+    public void setHotel(Hotel hotel) { this.hotel = hotel; }
 }

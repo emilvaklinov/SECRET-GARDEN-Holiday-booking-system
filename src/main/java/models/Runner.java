@@ -2,7 +2,6 @@ package models;
 
 import db.DBHelper;
 
-import java.util.List;
 
 public class Runner {
 
@@ -13,9 +12,25 @@ public class Runner {
         DBHelper.deleteAll(Hotel.class);
         DBHelper.deleteAll(Area.class);
 
-        Customer customer1 = new Customer("Emil", "Vaklinov", 100, 10);
+
+        Customer customer1 = new Customer("Emil", "Vaklinov", 100, 10, hotel1 );
         DBHelper.save(customer1);
 
+
+        Hotel hotel1 = new Hotel("Bilyanska guest house", Area.BULGARIA, 100, 0, customer1);
+        DBHelper.save(hotel1);
+        Hotel hotel2 = new Hotel("Calipso", Area.GREECE, 100, 0, customer1);
+        DBHelper.save(hotel2);
+        Hotel hotel3 = new Hotel("Glen Eagle", Area.SCOTLAND, 100, 0, customer1);
+        DBHelper.save(hotel3);
+        Hotel hotel4 = new Hotel("Holiday Inn", Area.JAPAN, 100, 0, customer1);
+        DBHelper.save(hotel4);
+        Hotel hotel5 = new Hotel("Art hotel", Area.HUNGARY, 100, 0, customer1);
+        DBHelper.save(hotel5);
+        Hotel hotel6 = new Hotel("Kenguro bagpacker", Area.AUSTRALIA, 100, 0, customer1);
+        DBHelper.save(hotel6);
+        Hotel hotel7 = new Hotel("Amigo", Area.ECUADOR, 100, 0, customer1);
+        DBHelper.save(hotel7);
 
         Flower flower1 = new Flower("Haberlea Rhodopensis","Evergreen Endemic", Area.BULGARIA,6, customer1);
         DBHelper.save((flower1));
@@ -34,20 +49,9 @@ public class Runner {
         Flower flower8 = new Flower("Lilium Rodopeum Delip","Endemic",Area.BULGARIA,5, customer1);
         DBHelper.save((flower8));
 
-        Hotel hotel1 = new Hotel("Bilyanska guest house", Area.BULGARIA, 100, 0);
-        DBHelper.save(hotel1);
-        Hotel hotel2 = new Hotel("Calipso", Area.GREECE, 100, 0);
-        DBHelper.save(hotel2);
-        Hotel hotel3 = new Hotel("Glen Eagle", Area.SCOTLAND, 100, 0);
-        DBHelper.save(hotel3);
-        Hotel hotel4 = new Hotel("Holiday Inn", Area.JAPAN, 100, 0);
-        DBHelper.save(hotel4);
-        Hotel hotel5 = new Hotel("Art hotel", Area.HUNGARY, 100, 0);
-        DBHelper.save(hotel5);
-        Hotel hotel6 = new Hotel("Kenguro bagpacker", Area.AUSTRALIA, 100, 0);
-        DBHelper.save(hotel6);
-        Hotel hotel7 = new Hotel("Amigo", Area.ECUADOR, 100, 0);
-        DBHelper.save(hotel7);
+
+
+
 
 
 //        Customer found = DBHelper.find();
@@ -55,5 +59,5 @@ public class Runner {
 
 
 //        List<Flower>
-    }
+     }
 }

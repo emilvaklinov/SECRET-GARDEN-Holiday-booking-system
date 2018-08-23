@@ -1,9 +1,12 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "hotels")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Hotel {
 
     private int id;
@@ -11,16 +14,21 @@ public class Hotel {
     private Area area;
     private double price;
     private int points;
+    private Customer customer;
+    private List<Customer> customers;
 
 
-    public Hotel(){}
+    public Hotel() {
+    }
 
 
-    public Hotel(String name, Area area, double price, int points) {
+    public Hotel(String name, Area area, double price, int points, Customer customer) {
         this.name = name;
         this.area = area;
         this.price = price;
         this.points = points;
+        this.customer = customer;
+        this.customers = new ArrayList<Customer>();
     }
 
     @Id
@@ -68,5 +76,14 @@ public class Hotel {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    @OneToMany(mappedBy = "hotel")
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 }

@@ -2,6 +2,7 @@ package db;
 
 import models.Customer;
 import models.Flower;
+import models.Hotel;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -157,10 +158,10 @@ public class DBHelper {
         return result;
     }
 
-//    public static Customer findFlowersForCustomer(Customer customer) {
+//    public static Hotel addHotelForCustomer(Customer customer) {
 //        session = HibernateUtil.getSessionFactory().openSession();
 //        Criteria cr = session.createCriteria(Customer.class);
-//        cr.add(Restrictions.eq("flower", flower));
+//        cr.add(Restrictions.eq("hotel", hotel));
 //        return (Customer) cr.uniqueResult();
 //    }
 
