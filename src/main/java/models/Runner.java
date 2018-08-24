@@ -1,6 +1,9 @@
 package models;
 
 import db.DBHelper;
+import db.GardensHelper;
+
+import java.util.List;
 
 
 public class Runner {
@@ -11,9 +14,6 @@ public class Runner {
         DBHelper.deleteAll(Flower.class);
         DBHelper.deleteAll(Hotel.class);
         DBHelper.deleteAll(Area.class);
-
-
-
 
 
         Hotel hotel1 = new Hotel("Bilyanska guest house", Area.BULGARIA, 100, 0);
@@ -31,7 +31,7 @@ public class Runner {
         Hotel hotel7 = new Hotel("Amigo", Area.ECUADOR, 100, 0);
         DBHelper.save(hotel7);
 
-        Customer customer1 = new Customer("Emil", "Vaklinov", 100, 10, hotel1 );
+        Customer customer1 = new Customer("Emil", "Vaklinov", 100, 10, hotel1);
         DBHelper.save(customer1);
 
         hotel1.addCustomer(customer1);
@@ -50,33 +50,27 @@ public class Runner {
         DBHelper.update(hotel7);
 
 
-
-        Flower flower1 = new Flower("Haberlea Rhodopensis","Evergreen Endemic", Area.BULGARIA,6, customer1);
+        Flower flower1 = new Flower("Haberlea Rhodopensis", "Evergreen Endemic", Area.BULGARIA, 6);
         DBHelper.save((flower1));
-        Flower flower2 = new Flower("Haberlea Rhodopensis","Evergreen Endemic",Area.GREECE,5, customer1);
+        Flower flower2 = new Flower("Haberlea Rhodopensis", "Evergreen Endemic", Area.GREECE, 5);
         DBHelper.save((flower2));
-        Flower flower3 = new Flower("Scottish Primrose (Primula scotica)", "Endemic", Area.SCOTLAND, 6, customer1);
+        Flower flower3 = new Flower("Scottish Primrose (Primula scotica)", "Endemic", Area.SCOTLAND, 6);
         DBHelper.save(flower3);
-        Flower flower4 = new Flower("Sakura (Cherry Blossom)", "Endemic", Area.JAPAN, 5, customer1);
+        Flower flower4 = new Flower("Sakura (Cherry Blossom)", "Endemic", Area.JAPAN, 5);
         DBHelper.save(flower4);
-        Flower flower5 = new Flower("Fehér tündérrózsa (Nymphaea alba)", "Endemic", Area.HUNGARY, 5, customer1);
+        Flower flower5 = new Flower("Fehér tündérrózsa (Nymphaea alba)", "Endemic", Area.HUNGARY, 5);
         DBHelper.save(flower5);
-        Flower flower6 = new Flower("Kangaroo Paw (Macropidia fulginosa)", "Endemic", Area.AUSTRALIA, 10, customer1);
+        Flower flower6 = new Flower("Kangaroo Paw (Macropidia fulginosa)", "Endemic", Area.AUSTRALIA, 10);
         DBHelper.save(flower6);
-        Flower flower7 = new Flower("Dracula vampira", "Endemic", Area.ECUADOR, 7, customer1);
+        Flower flower7 = new Flower("Dracula vampira", "Endemic", Area.ECUADOR, 7);
         DBHelper.save(flower7);
-        Flower flower8 = new Flower("Lilium Rodopeum Delip","Endemic",Area.BULGARIA,5, customer1);
+        Flower flower8 = new Flower("Lilium Rodopeum Delip", "Endemic", Area.BULGARIA, 5);
         DBHelper.save((flower8));
 
 
+        GardensHelper.addCustomerFlower(customer1, flower1);
 
-
-
-
-//        Customer found = DBHelper.find();
-//        Flower foundFlower = DBHelper.findFlowersForCustomer(flower);
-
-
-//        List<Flower>
-     }
+        List<Flower> customerGetFlower = GardensHelper.getCustomerFlower(customer1);
+        List<Customer> flowerGetCustomer = GardensHelper.getFlowerCustomer(flower1);
+    }
 }

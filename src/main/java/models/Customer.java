@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -17,7 +19,7 @@ public class Customer {
     private Hotel hotel;
 
 
-    public Customer(){
+    public Customer() {
     }
 
     public Customer(String firstName, String lastName, double money, int points, Hotel hotel) {
@@ -77,7 +79,13 @@ public class Customer {
         this.points = points;
     }
 
-    @OneToMany(mappedBy = "customer")
+//    @OneToMany(mappedBy = "customer")
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(name = "customers_flowers",
+            joinColumns = {@JoinColumn(name = "customer_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "flower_id", nullable = false, updatable = false)})
     public List<Flower> getFlowers() {
         return flowers;
     }
@@ -88,7 +96,15 @@ public class Customer {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id", nullable = false)
-    public Hotel getHotel() { return hotel; }
+    public Hotel getHotel() {
+        return hotel;
+    }
 
-    public void setHotel(Hotel hotel) { this.hotel = hotel; }
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public void addFlower(Flower flower) {
+        this.flowers.add(flower);
+    }
 }

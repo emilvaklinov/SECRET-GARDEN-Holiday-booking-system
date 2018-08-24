@@ -1,6 +1,10 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "flowers")
@@ -12,17 +16,19 @@ public class Flower {
     private String type;
     private Area area;
     private int points;
-    private Customer customer;
+//    private Customer customer;
+    private List<Customer>customers;
 
 
     public Flower(){}
 
-    public Flower(String name, String type, Area area, int points, Customer customer) {
+    public Flower(String name, String type, Area area, int points) {
         this.name = name;
         this.type = type;
         this.area = area;
         this.points = points;
-        this.customer = customer;
+//        this.customer = customer;
+        this.customers = new ArrayList<Customer>();
     }
 
     @Id
@@ -72,13 +78,23 @@ public class Flower {
         this.points = points;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", nullable = false)
-    public Customer getCustomer() {
-        return customer;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "customer_id", nullable = false)
+
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @ManyToMany
+    @JoinTable(name = "customers_flowers",
+            joinColumns = {@JoinColumn(name = "flower_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "customer_id", nullable = false, updatable = false)})
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
+    public void addCustomerFlower(Customer customer){
+        this.customers.add(customer);
+    }
+
 }
