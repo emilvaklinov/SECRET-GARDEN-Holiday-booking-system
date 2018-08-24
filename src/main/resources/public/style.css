@@ -1,0 +1,11 @@
+body {
+  background-image: url('/images/background.jpg');
+  background-color: #546C32;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: papayawhip;
+  font-family: 'Merriweather', serif;
+  padding: 0px;
+  margin: 0px;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+}

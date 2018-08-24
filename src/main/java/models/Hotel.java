@@ -14,7 +14,7 @@ public class Hotel {
     private Area area;
     private double price;
     private int points;
-    private Customer customer;
+//    private Customer customer;
     private List<Customer> customers;
 
 
@@ -22,12 +22,12 @@ public class Hotel {
     }
 
 
-    public Hotel(String name, Area area, double price, int points, Customer customer) {
+    public Hotel(String name, Area area, double price, int points) {
         this.name = name;
         this.area = area;
         this.price = price;
         this.points = points;
-        this.customer = customer;
+       // this.customer = customer;
         this.customers = new ArrayList<Customer>();
     }
 
@@ -85,5 +85,9 @@ public class Hotel {
 
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
+    }
+
+    public void addCustomer(Customer customer){
+        customers.add(customer);
     }
 }
