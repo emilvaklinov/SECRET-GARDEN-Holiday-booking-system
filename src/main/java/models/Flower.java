@@ -8,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "flowers")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Flower {
 
     private int id;
@@ -16,7 +15,6 @@ public class Flower {
     private String type;
     private Area area;
     private int points;
-//    private Customer customer;
     private List<Customer>customers;
 
 
@@ -27,7 +25,6 @@ public class Flower {
         this.type = type;
         this.area = area;
         this.points = points;
-//        this.customer = customer;
         this.customers = new ArrayList<Customer>();
     }
 

@@ -14,7 +14,7 @@ public class Hotel {
     private Area area;
     private double price;
     private int points;
-//    private Customer customer;
+    //    private Customer customer;
     private List<Customer> customers;
 
 
@@ -27,7 +27,7 @@ public class Hotel {
         this.area = area;
         this.price = price;
         this.points = points;
-       // this.customer = customer;
+        // this.customer = customer;
         this.customers = new ArrayList<Customer>();
     }
 
@@ -87,7 +87,42 @@ public class Hotel {
         this.customers = customers;
     }
 
-    public void addCustomer(Customer customer){
+    public void addCustomer(Customer customer) {
         customers.add(customer);
     }
+
+
+
+    public boolean checkInCustomer(Customer customer) {
+        if (!customers.contains(customer)) {
+                customers.add(customer);
+                if (customer.getPoints() <= 9){
+                    customer.makePayment(this.price);
+                } else {
+                    customer.takePoints(10);
+                    customer.makePayment(this.price - 10);
+                }
+                return true;
+            } else {
+                return false;
+            }
+
+    }
+
+
+//    public boolean checkOutCustomer(ArrayList<Customer>customers) {
+//
+//        if (hotel.contains(hotel)) {
+//            ArrayList<Customer> currentCustomers = hotel.getCurrentCustomers();
+//
+//            if (currentCustomers.contains(customers)) {
+//                room.removeGuest(customers);
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        } else {
+//            return false;
+//        }
+//    }
 }

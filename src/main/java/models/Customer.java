@@ -107,4 +107,22 @@ public class Customer {
     public void addFlower(Flower flower) {
         this.flowers.add(flower);
     }
+
+    public void makePayment(Double amount){
+        Double money = this.money;
+        if (this.money >= amount){
+            this.money -= amount;
+        } else {
+            this.money = money;
+        }
+    }
+
+    public void takePoints(int numPoints){
+        int points = this.points;
+        if(this.points >= numPoints){
+            this.points -= numPoints;
+        } else {
+            this.points = points;
+        }
+    }
 }
