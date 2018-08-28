@@ -45,8 +45,8 @@ public class CustomersController {
 
 
         post("/customers", (req, res) -> {
-            String firstName = req.queryParams("first_name");
-            String lastName = req.queryParams("last_name");
+            String firstName = req.queryParams("firstName");
+            String lastName = req.queryParams("lastName");
 
             Customer customer1 = new Customer(firstName, lastName);
             DBHelper.save(customer1);

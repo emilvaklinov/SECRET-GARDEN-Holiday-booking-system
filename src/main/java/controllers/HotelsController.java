@@ -1,6 +1,7 @@
 package controllers;
 
 import db.DBHelper;
+import db.DBHotel;
 import models.Area;
 import models.Customer;
 import models.Hotel;
@@ -31,6 +32,20 @@ public class HotelsController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        post("/hotels/area", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String area = req.queryParams("areaSelect");
+
+            List<Hotel> hotel = DBHotel.getHotelByArea(Area.valueOf(area));
+
+
+            model.put("template", "templates/hotels/index.vtl");
+            List<Hotel> hotels = DBHelper.getAll(Hotel.class);
+            model.put("hotels", hotels);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
 
         get("/hotels/new", (req, res) -> {
 
@@ -53,6 +68,13 @@ public class HotelsController {
             int points = Integer.parseInt(req.queryParams("points"));
             Hotel hotel1 = new Hotel(name, null, price, points);
             DBHelper.save(hotel1);
+
+            //query to find all hotels in the area
+
+            //view that shows all hotels in an area
+
+            /area/1
+
             res.redirect("/hotels");
             return null;
         }, new VelocityTemplateEngine());
