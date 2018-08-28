@@ -13,8 +13,26 @@
     <tr>
         <td>$hotel.getName()</td>
         <td>$hotel.getArea()</td>
-        <td>$hotel.getPrice</td>
+        <td>$hotel.getPrice()</td>
 
-    </tr>
-    #end
+
 </table>
+
+<form action="/hotels/$hotel.getId()/edit" method="get">
+    <input type="submit" value="Update" class="button">
+</form>
+</td>
+<td>
+    <form action="/hotels/$hotel.getId()/delete" method="post">
+        <input type="submit" value="Delete" class="button">
+    </form>
+</td>
+
+</tr>
+#end
+
+</table>
+
+<form action="/hotels/new" method="get">
+    <input type="submit" value="Add Hotel" class="button">
+</form>

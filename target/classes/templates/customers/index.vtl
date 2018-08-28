@@ -14,5 +14,24 @@
         <td>$customer.getLastName()</td>
 
     </tr>
-    #end
+
 </table>
+
+<form action="/customers/$customer.getId()/edit" method="get">
+    <input type="submit" value="Update" class="button">
+</form>
+</td>
+<td>
+    <form action="/customers/$customer.getId()/delete" method="post">
+        <input type="submit" value="Delete" class="button">
+    </form>
+</td>
+
+</tr>
+#end
+
+</table>
+
+<form action="/customers/new" method="get">
+    <input type="submit" value="Add customer" class="button">
+</form>

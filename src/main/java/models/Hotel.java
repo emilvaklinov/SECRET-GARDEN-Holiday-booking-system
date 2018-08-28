@@ -6,7 +6,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "hotels")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Hotel {
 
     private int id;
@@ -14,7 +13,6 @@ public class Hotel {
     private Area area;
     private double price;
     private int points;
-    //    private Customer customer;
     private List<Customer> customers;
 
 
@@ -27,7 +25,6 @@ public class Hotel {
         this.area = area;
         this.price = price;
         this.points = points;
-        // this.customer = customer;
         this.customers = new ArrayList<Customer>();
     }
 
@@ -110,19 +107,4 @@ public class Hotel {
     }
 
 
-//    public boolean checkOutCustomer(ArrayList<Customer>customers) {
-//
-//        if (hotel.contains(hotel)) {
-//            ArrayList<Customer> currentCustomers = hotel.getCurrentCustomers();
-//
-//            if (currentCustomers.contains(customers)) {
-//                room.removeGuest(customers);
-//                return true;
-//            } else {
-//                return false;
-//            }
-//        } else {
-//            return false;
-//        }
-//    }
 }

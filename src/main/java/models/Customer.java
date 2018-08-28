@@ -22,12 +22,21 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, double money, int points, Hotel hotel) {
+    public Customer(String firstName, String lastName, double money, int points , Hotel hotel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.money = money;
         this.points = points;
         this.hotel = hotel;
+        this.flowers = new ArrayList<Flower>();
+
+    }
+
+    public Customer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.money = 0;
+        this.points = 0;
         this.flowers = new ArrayList<Flower>();
 
     }
@@ -95,7 +104,7 @@ public class Customer {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hotel_id", nullable = false)
+    @JoinColumn(name = "hotel_id", nullable = true)
     public Hotel getHotel() {
         return hotel;
     }

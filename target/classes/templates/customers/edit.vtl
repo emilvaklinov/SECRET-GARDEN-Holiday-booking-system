@@ -1,0 +1,15 @@
+<form action="/customers/$customer.getId()" method="post">
+
+    <label for="firstName">First Name: </label>
+    <input type="text" name="firstName" id="firstName" required="true" value="$customer.getFirstName()">
+
+    <label for="lastName">Last Name: </label>
+    <input type="text" name="lastName" id="lastName" required="true" value="$customer.getLastName()">
+     #foreach($customer in $customers)
+
+
+        #end
+    </select>
+
+    <input type="submit" value="Update" class="button"/>
+</form>

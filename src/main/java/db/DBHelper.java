@@ -137,11 +137,6 @@ public class DBHelper {
         return results;
     }
 
-//    public static <T> List<T> getAll(Class classType) {
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        Criteria cr = session.createCriteria(classType);
-//        return getList(cr);
-//    }
 
     public static <T> T find(Class classType, int id) {
         session = HibernateUtil.getSessionFactory().openSession();
