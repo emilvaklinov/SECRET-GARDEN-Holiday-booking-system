@@ -7,7 +7,6 @@ import java.util.*;
 
 @Entity
 @Table(name = "customers")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Customer {
 
     private int id;
@@ -88,7 +87,6 @@ public class Customer {
         this.points = points;
     }
 
-//    @OneToMany(mappedBy = "customer")
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToMany

@@ -15,19 +15,35 @@ public class Seeds {
         DBHelper.deleteAll(Area.class);
 
 
-        Hotel hotel1 = new Hotel("Bilyanska guest house", Area.BULGARIA, 100, 0);
+        Area area1 = new Area("Bulgaria");
+        Area area2 = new Area("Greece");
+        Area area3 = new Area("Scotland");
+        Area area4 = new Area("Japan");
+        Area area5 = new Area("Hungary");
+        Area area6 = new Area("Australia");
+        Area area7 = new Area("Ecuador");
+
+        DBHelper.save(area1);
+        DBHelper.save(area2);
+        DBHelper.save(area3);
+        DBHelper.save(area4);
+        DBHelper.save(area5);
+        DBHelper.save(area6);
+        DBHelper.save(area7);
+
+        Hotel hotel1 = new Hotel("Bilyanska guest house", area1, 100, 0);
         DBHelper.save(hotel1);
-        Hotel hotel2 = new Hotel("Calipso", Area.GREECE, 100, 0);
+        Hotel hotel2 = new Hotel("Calipso", area2, 100, 0);
         DBHelper.save(hotel2);
-        Hotel hotel3 = new Hotel("Glen Eagle", Area.SCOTLAND, 100, 0);
+        Hotel hotel3 = new Hotel("Glen Eagle", area3, 100, 0);
         DBHelper.save(hotel3);
-        Hotel hotel4 = new Hotel("Holiday Inn", Area.JAPAN, 100, 0);
+        Hotel hotel4 = new Hotel("Holiday Inn", area4, 100, 0);
         DBHelper.save(hotel4);
-        Hotel hotel5 = new Hotel("Art hotel", Area.HUNGARY, 100, 0);
+        Hotel hotel5 = new Hotel("Art hotel", area5, 100, 0);
         DBHelper.save(hotel5);
-        Hotel hotel6 = new Hotel("Kenguro bagpacker", Area.AUSTRALIA, 100, 0);
+        Hotel hotel6 = new Hotel("Kenguro bagpacker", area6, 100, 0);
         DBHelper.save(hotel6);
-        Hotel hotel7 = new Hotel("Amigo", Area.ECUADOR, 100, 0);
+        Hotel hotel7 = new Hotel("Amigo", area7, 100, 0);
         DBHelper.save(hotel7);
 
         Customer customer1 = new Customer("Emil", "Vaklinov", 100, 10, hotel1);
@@ -49,21 +65,22 @@ public class Seeds {
         DBHelper.update(hotel7);
 
 
-        Flower flower1 = new Flower("Haberlea Rhodopensis", "Evergreen Endemic", Area.BULGARIA, 6);
+        Flower flower1 = new Flower("Haberlea Rhodopensis", "Evergreen Endemic", area1, 6);
         DBHelper.save((flower1));
-        Flower flower2 = new Flower("Haberlea Rhodopensis", "Evergreen Endemic", Area.GREECE, 5);
+        Flower flower2 = new Flower("Haberlea Rhodopensis", "Evergreen Endemic", area2, 5);
         DBHelper.save((flower2));
-        Flower flower3 = new Flower("Scottish Primrose (Primula scotica)", "Endemic", Area.SCOTLAND, 6);
+        Flower flower3 = new Flower("Scottish Primrose (Primula scotica)", "Endemic", area3, 6);
         DBHelper.save(flower3);
-        Flower flower4 = new Flower("Sakura (Cherry Blossom)", "Endemic", Area.JAPAN, 5);
+        Flower flower4 = new Flower("Sakura (Cherry Blossom)", "Endemic", area4, 5);
         DBHelper.save(flower4);
-        Flower flower5 = new Flower("Fehér tündérrózsa (Nymphaea alba)", "Endemic", Area.HUNGARY, 5);
+        Flower flower5 = new Flower("Fehér tündérrózsa (Nymphaea alba)", "Endemic", area5, 5);
         DBHelper.save(flower5);
-        Flower flower6 = new Flower("Kangaroo Paw (Macropidia fulginosa)", "Endemic", Area.AUSTRALIA, 10);
+        Flower flower6 = new Flower("Kangaroo Paw (Macropidia fulginosa)", "Endemic", area6, 10);
         DBHelper.save(flower6);
-        Flower flower7 = new Flower("Dracula vampira", "Endemic", Area.ECUADOR, 7);
+        Flower flower7 = new Flower("Dracula vampira", "Endemic", area7, 7);
         DBHelper.save(flower7);
-        Flower flower8 = new Flower("Lilium Rodopeum Delip", "Endemic", Area.BULGARIA, 5);
+        Flower flower8 = new Flower("Lilium Rodopeum Delip", "Endemic", area1, 5);
         DBHelper.save((flower8));
+
     }
 }

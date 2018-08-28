@@ -1,27 +1,39 @@
 package models;
 
-public enum Area {
 
-    BULGARIA("Bulgaria"),
-    GREECE("Greece"),
-    SCOTLAND("Scotland"),
-    JAPAN("Japan"),
-    HUNGARY("Hungary"),
-    AUSTRALIA("Australia"),
-    ECUADOR("Ecuador");
+import javax.persistence.*;
+
+@Entity
+@Table(name = "area")
+public class Area {
+
+    private int id;
+    private String name;
+
+    public Area(){}
 
 
-    private String Area;
-
-    public void setArea(String area) {
-        Area = area;
+    public Area(String name) {
+        this.name = name;
     }
 
-    Area(String area) {
-        this.Area = area;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
 
-    public String getArea() {
-        return Area;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

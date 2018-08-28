@@ -1,8 +1,6 @@
 package controllers;
 
 import db.DBHelper;
-import models.Area;
-import models.Customer;
 import models.Hotel;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
