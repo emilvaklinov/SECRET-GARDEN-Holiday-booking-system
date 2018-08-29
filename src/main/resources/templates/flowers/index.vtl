@@ -1,4 +1,6 @@
-<p class="pageHeader">Flowers</p>
+
+
+<p class="pageHeader">FLOWERS</p>
 
 <table>
     <tr>
@@ -6,15 +8,22 @@
         <th>Name</th>
         <th>Type</th>
         <th>Area</th>
+        <th>Points</th>
         <th></th>
     </tr>
 
     #foreach($flower in $flowers)
     <tr>
         <td>$flower.getName()</td>
+
         <td>$flower.getType()</td>
+
         <td>$flower.getArea()</td>
+
+        <td>$flower.getPoints()</td>
 
     </tr>
     #end
 </table>
+
+</th>

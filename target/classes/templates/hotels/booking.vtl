@@ -1,0 +1,30 @@
+<p class="pageHeader">BOOK YOUR HOTEL</p>
+
+<form action="/hotels/$hotel.getId()" method="post">
+
+    <label for="name"> Name: </label>
+    <input type="text" name="name" id="name" required="true" value="$hotel.getName()">
+
+    <label for="area"> Area: </label>
+    <input type="text" name="area" id="area" required="true" value="$hotel.getArea()">
+
+
+    <!--<label for="price"> Price: </label>-->
+    <!--<input type="number" name="price" id="price" required="true" value="$hotel.getPrice()">-->
+    #foreach($hotel in $hotels)
+
+#end
+
+    <!--<label for="firstName">First Name:</label>-->
+    <!--<input type="text" class="dropdown" name="firstName" required="true" id="firstName">-->
+
+    <!--<label for="lastName">Last Name:</label>-->
+    <!--<input type="text" class="dropdown" name="lastName" required="true" id="lastName">-->
+    <select name="customer" id="customer">
+    #foreach($customer in $customers)
+    <option value="$customer.getId()">$customer.getFirstName() $customer.getLastName()</option>
+    #end
+    </select>
+
+    <input type="submit" value="Booking" class="button"/>
+</form>

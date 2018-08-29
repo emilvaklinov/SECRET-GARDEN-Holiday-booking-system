@@ -1,24 +1,28 @@
-<p class="pageHeader">Customers</p>
+<p class="pageHeader">CUSTOMERS</p>
 
 <table>
     <tr>
 
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Points</th>
         <th></th>
     </tr>
 
     #foreach($customer in $customers)
     <tr>
         <td>$customer.getFirstName()</td>
+
         <td>$customer.getLastName()</td>
+
+        <td>$customer.getPoints()</td>
 
     </tr>
 
 </table>
 
 <form action="/customers/$customer.getId()/edit" method="get">
-    <input type="submit" value="Update" class="button">
+    <input type="submit" value="Login" class="button">
 </form>
 </td>
 <td>
@@ -33,5 +37,5 @@
 </table>
 
 <form action="/customers/new" method="get">
-    <input type="submit" value="Add customer" class="button">
+    <input type="submit" value="Make profile" class="button">
 </form>

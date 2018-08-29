@@ -1,13 +1,13 @@
-<form action="/hotels/$hotel.getId()" method="post">
+<form action="/hotels/$hotel.getId()" method="get">
 
-    <label for="Name"> Name: </label>
-    <input type="text" name="Name" id="Name" required="true" value="$hotel.getName()">
+    <label for="name"> Name: </label>
+    <input type="text" name="name" id="name" required="true" value="$hotel.getName()">
 
-    <label for="Area"> Area: </label>
-    <input type="text" name="Area" id="Area" required="true" value="$hotel.getArea()">
+    <label for="area"> Area: </label>
+    <input type="text" name="area" id="area" required="true" value="$hotel.getArea()">
 
 
-    <label for="price">Price: </label>
+    <label for="price"> Price: </label>
     <input type="number" name="price" id="price" required="true" value="$hotel.getPrice()">
     #foreach($hotel in $hotels)
 

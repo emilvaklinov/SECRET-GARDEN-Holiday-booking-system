@@ -14,6 +14,7 @@ import java.util.Map;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
+import static spark.route.HttpMethod.get;
 
 public class HotelsController {
 
@@ -47,6 +48,42 @@ public class HotelsController {
         }, new VelocityTemplateEngine());
 
 
+        get("/hotels/:id/booking", (req, res) -> {
+
+                    //create the model
+                    Map<String, Object> model = new HashMap<>();
+                    model.put("template", "templates/hotels/booking.vtl");
+
+                    // Do query to get list of customers (get all of them)
+                    List<Customer> customers = DBHelper.getAll(Customer.class);
+
+
+                    int hotelId = Integer.parseInt(req.params(":id"));
+                    Hotel hotel1 = DBHelper.find(Hotel.class, hotelId);
+                    model.put("hotel", hotel1);
+                    model.put("customers", customers);
+                    // Pass list of customers into model with put on the name 'customers'
+
+                    return new ModelAndView(model, "templates/layout.vtl");
+
+                }, new VelocityTemplateEngine()
+        );
+
+        post("/hotels/booking", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String area = req.queryParams("customerBooking");
+
+            List<Customer> customers = DBHelper.getAll(Customer.class);
+
+
+            model.put("template", "templates/customers/index.vtl");
+            List<Customer> customers1 = DBHelper.getAll(Customer.class);
+            model.put("customers", customers);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
         get("/hotels/new", (req, res) -> {
 
             Map<String, Object> model = new HashMap<>();
@@ -58,7 +95,6 @@ public class HotelsController {
 
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
 
 
         post("/hotels", (req, res) -> {
@@ -73,7 +109,7 @@ public class HotelsController {
 
             //view that shows all hotels in an area
 
-            /area/1
+//            /area/1
 
             res.redirect("/hotels");
             return null;
@@ -108,12 +144,27 @@ public class HotelsController {
                     int hotelId = Integer.parseInt(req.params(":id"));
                     Hotel hotel = DBHelper.find(Hotel.class, hotelId);
 
-                    String name = req.queryParams("name");
+                    String name = req.queryParams("customer");
+//                    // Use the name to do a query to get customer by name
+//                    Customer customer1 = DBHelper.find(Customer.class, customerId);
+//                    // now have customer object !!
+//                    int money = Integer.parseInt(req.queryParams("money"));
+//                    int points = Integer.parseInt(req.queryParams("points"));
+//                    // Apply discount and book hotel
+
+
+
+
+                    // update customer
+
+//                    customer1.setPoints(points);
+//                    customer1.setMoney(money);
+//
 //                    String area = req.queryParams("area");
 //                    Hotel hotel1 = DBHelper.update(Hotel.class, hotel);
 
 
-                    hotel.setName(name);
+//                    hotel.setName(name);
 //                    hotel.setArea(area);
 
                     DBHelper.update(hotel);
@@ -121,6 +172,18 @@ public class HotelsController {
                     return null;
                 }
         );
+
+//        # show
+
+        get("hotels/id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/hotels/index.vtl");
+            List<Hotel> hotels = DBHelper.getAll(Hotel.class);
+            model.put("hotels", hotels);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
 
         //        # destroy
 //        get '/className/:id/delete'

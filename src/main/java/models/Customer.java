@@ -7,7 +7,6 @@ import java.util.*;
 
 @Entity
 @Table(name = "customers")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Customer {
 
     private int id;

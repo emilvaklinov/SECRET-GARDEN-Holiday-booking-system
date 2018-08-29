@@ -39,14 +39,17 @@ public class MainController {
                     Area australia = Area.AUSTRALIA;
                     Area ecuador = Area.ECUADOR;
 
+//            To make for loop and clean the code
+// model.put("allAreas", Area.values());
 
-                    model.put("bulgaria", bulgaria);
-                    model.put("greece", greece);
-                    model.put("scotland", scotland);
-                    model.put("japan", japan);
-                    model.put("hungary", hungary);
-                    model.put("australia", australia);
-                    model.put("ecuador", ecuador);
+
+                    model.put("bulgaria", Area.BULGARIA);
+                    model.put("greece", Area.GREECE);
+                    model.put("scotland", Area.SCOTLAND);
+                    model.put("japan", Area.JAPAN);
+                    model.put("hungary", Area.HUNGARY);
+                    model.put("australia", Area.AUSTRALIA);
+                    model.put("ecuador", Area.ECUADOR);
                     model.put("template", "templates/index.vtl");
 
                     return new ModelAndView(model, "templates/layout.vtl");

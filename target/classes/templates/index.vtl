@@ -1,31 +1,37 @@
 <!--<h1>Flowers search</h1>-->
 
-    <a href="/customers" class="button cente r">Customers</a>
 
-    <a href="/flowers" class="button center">Flowers</a>
-
-    <a href="/hotels" class="button center">Hotels</a>
 
     <!--<a href="/areas" class="button center">Areas</a>-->
 
+<th>
+<label for="areaSelect">Make your Holiday</label>
 
+</th>
 
+<th>
 
-<form action="/hotels/area">
+<form class="search_form" action="/hotels/area" method="post">
     <select name="areaSelect" id="areaSelect">
-        <option value="bulgaria">$bulgaria.getArea()</option>
-        <option value="greece">$greece.getArea()</option>
-        <option value="scotland">$scotland.getArea()</option>
-        <option value="japan">$japan.getArea()</option>
-        <option value="hungary">$hungary.getArea()</option>
-        <option value="australia">$australia.getArea()</option>
-        <option value="ecuador">$ecuador.getArea()</option>
+
+        <!--to make for loop and clean the code with the main controller-->
+
+        <option value="$bulgaria.name()">$bulgaria.getArea()</option>
+        <option value="$greece.name()">$greece.getArea()</option>
+        <option value="$scotland.name()">$scotland.getArea()</option>
+        <option value="$japan.name()">$japan.getArea()</option>
+        <option value="$hungary.name()">$hungary.getArea()</option>
+        <option value="$australia.name()">$australia.getArea()</option>
+        <option value="$ecuador.name()">$ecuador.getArea()</option>
 
         <input type="submit" value="GO">
+        <img src="/images/background.jpg" alt="flower image">
+
     </select>
 
 
 </form>
+</th>
 
 <!--<section class="main">-->
     <!--<form class="search" method="post" action="index.html" >-->
