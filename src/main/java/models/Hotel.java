@@ -106,5 +106,13 @@ public class Hotel {
 
     }
 
+    public int checkPriceOfBookingForCustomer(Customer customer){
+
+
+
+        return 0;
+    }
+
+
 
 }

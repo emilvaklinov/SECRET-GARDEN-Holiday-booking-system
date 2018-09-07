@@ -144,22 +144,23 @@ public class HotelsController {
                     int hotelId = Integer.parseInt(req.params(":id"));
                     Hotel hotel = DBHelper.find(Hotel.class, hotelId);
 
-                    String name = req.queryParams("customer");
-//                    // Use the name to do a query to get customer by name
+//                    String name = req.queryParams("customer");
+//////                    // Use the name to do a query to get customer by name
 //                    Customer customer1 = DBHelper.find(Customer.class, customerId);
-//                    // now have customer object !!
+//////                    // now have customer object !!
 //                    int money = Integer.parseInt(req.queryParams("money"));
 //                    int points = Integer.parseInt(req.queryParams("points"));
-//                    // Apply discount and book hotel
+////                    // Apply discount and book hotel
+////
+//                    CheckInCustomer
+//
+//HIDDEN html
 
-
-
-
-                    // update customer
-
+//                    // update customer
+//
 //                    customer1.setPoints(points);
 //                    customer1.setMoney(money);
-//
+
 //                    String area = req.queryParams("area");
 //                    Hotel hotel1 = DBHelper.update(Hotel.class, hotel);
 
@@ -168,6 +169,19 @@ public class HotelsController {
 //                    hotel.setArea(area);
 
                     DBHelper.update(hotel);
+
+//                    GET(/hotels/hotelid/customerid) {
+//
+//                        hotelId - get hotel
+//                        customerid - get customer
+//                        price = hotel.getPriceForcustomer(customer)
+//
+//                        model(price)
+//                                models(hotel)
+//                                        models(customer)
+//
+//                        new Modelviw(model, view)
+//                    }
                     res.redirect("/hotels");
                     return null;
                 }

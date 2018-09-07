@@ -18,35 +18,23 @@
 
 </table>
 
+<table>
 
-
-</tr>
-
-<form action="/hotels/$hotel.getId()/booking" method="get">
-    <input type="submit" value="Booking" class="button">
-</form>
+<td>
+    <form action="/hotels/$hotel.getId()/booking" method="get">
+        <input type="submit" value="Booking" class="button">
+    </form>
 </td>
 
+<td>
 
 
-</tr>
+    <form action="/hotels/$hotel.getId()/edit" method="get">
+        <input type="submit" value="Login" class="button">
+    </form>
 
-<!--<form action="/hotels/$hotel.getId()/edit" method="get">-->
-    <!--<input type="submit" value="Update" class="button">-->
-<!--</form>-->
-<!--</td>-->
-<!--<td>-->
-    <!--<form action="/hotels/$hotel.getId()/delete" method="post">-->
-        <!--<input type="submit" value="Delete" class="button">-->
-    <!--</form>-->
-<!--</td>-->
-<!--<td>-->
-    <!--<form action="/hotels/$hotel.getId()/delete" method="post">-->
-        <!--<input type="submit" value="Login" class="button">-->
-    <!--</form>-->
-<!--</td>-->
+</td>
 
-</tr>
 #end
 
 </table>
@@ -54,3 +42,14 @@
 <form action="/hotels/new" method="get">
     <input type="submit" value="Add Hotel" class="button">
 </form>
+
+
+<!--<form action="/hotels/$hotel.getId()/edit" method="get">-->
+<!--<input type="submit" value="Update" class="button">-->
+<!--</form>-->
+<!--</td>-->
+<!--<td>-->
+<!--<form action="/hotels/$hotel.getId()/delete" method="post">-->
+<!--<input type="submit" value="Delete" class="button">-->
+<!--</form>-->
+<!--</td>-->
